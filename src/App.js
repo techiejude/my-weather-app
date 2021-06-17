@@ -1,6 +1,6 @@
 import React, {useState}from "react"
 const api = {
- key:"7d4ef5d23648c7c62acd3ccfa1a0a30b",
+ key:"357c7e265d8b3b3e400727762696b055",
  base: "https://api.openweathermap.org/data/2.5/"
 }
 
@@ -8,13 +8,14 @@ function App() {
   const [query, setQuery]= useState('');
   const [weather, setWeather]= useState({});
   
-  const search= event => {
+    const search=event => {
     if(event.key === "Enter") {
-      fetch(`$ {api.base} weather?q=${query}& units=metric&APPID=${api.key}`)
+     
+ fetch(`${api.base}weather?q=${query}&units=metric&APPID=${api.key}`)
       .then(res => res.json())
       .then(result => {
         setWeather(result);
-        setQuery('');
+        setQuery(''); 
         console.log(result);
     });
   }
@@ -58,7 +59,7 @@ function App() {
              </div> 
              <div className="weather-box">
               <div className="temp">
-               {Math.round.weather.main.temp}°c 
+               {Math.round(weather.main.temp)}°c 
               </div>
               <div className="weather"> {weather.weather[0].main} </div>
            </div>
@@ -68,6 +69,7 @@ function App() {
         </main>
     </div>
   );
-}
+
+}  
 
 export default App;
